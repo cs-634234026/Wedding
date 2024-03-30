@@ -344,6 +344,66 @@
         </div>
         <!-- เครื่องประดับ -->
 
+         <!-- PROMOTION -->
+         <div class="d-flex justify-content-center mt-5">
+            <h1 id="section2"> PROMOTION มาแรง! </h1>
+        </div>
+
+        <div class="d-flex justify-content-center mt-5 ms-5">
+
+            <div class=" ms-5" style="width: 18rem;">
+                <img src="./img/boy-with-rocket-light.png" class="card-img-top" alt="" width="100px"
+                    style="border-radius: 20px; box-shadow: 8px 8px 8px rgba(0, 0, 0, 0.25);">
+                <div class="card-body d-flex" style="text-align: center;">
+                    <button type="button" class="ms-4 btn btn-success" style="background-color: #A367B1; border: 2px solid #A367B1; border-radius: 10px; 
+              box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25); max-width: 100%;" data-bs-toggle="modal"
+                        data-bs-target="#exampleModal"> จองชุด</button>
+                    <button type="button" class="ms-1 btn-success" style="background-color: #A367B1; border: 2px solid #A367B1; border-radius: 10px; 
+                        box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25); max-width: 100%;" data-bs-toggle="modal"
+                        data-bs-target="#exampleModal"> ดูตาราง</button>
+                    <button type="button" class="ms-1 btn-success" style="background-color: #A367B1; border: 2px solid #A367B1; border-radius: 10px; 
+                        box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25); max-width: 100%;" data-bs-toggle="modal"
+                        data-bs-target="#exampleModal"> เงื่อนไข</button>
+                </div>
+            </div>
+
+
+            <div class=" ms-5" style="width: 18rem;">
+                <img src="./img/boy-with-rocket-light.png" class="card-img-top" alt="" width="100px"
+                    style="border-radius: 20px;  box-shadow: 8px 8px 8px rgba(0, 0, 0, 0.25);">
+                <div class="card-body d-flex" style="text-align: center;">
+                    <button type="button" class="ms-4 btn btn-success" style="background-color: #A367B1; border: 2px solid #A367B1; border-radius: 10px; 
+                  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25); max-width: 100%;" data-bs-toggle="modal"
+                        data-bs-target="#exampleModal"> จองชุด</button>
+                    <button type="button" class="ms-1 btn-success" style="background-color: #A367B1; border: 2px solid #A367B1; border-radius: 10px; 
+                            box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25); max-width: 100%;" data-bs-toggle="modal"
+                        data-bs-target="#exampleModal"> ดูตาราง</button>
+                    <button type="button" class="ms-1 btn-success" style="background-color: #A367B1; border: 2px solid #A367B1; border-radius: 10px; 
+                        box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25); max-width: 100%;" data-bs-toggle="modal"
+                        data-bs-target="#exampleModal"> เงื่อนไข</button>
+                </div>
+            </div>
+
+            <div class=" ms-5" style="width: 18rem;">
+            <h4 class="text-center">ชุดเเละเครื่องประดับ</h4>
+                <img src="./img/promotion.jpg" class="card-img-top" alt="" width="100px"
+                    style="border-radius: 20px;  box-shadow: 8px 8px 8px rgba(0, 0, 0, 0.25);">
+                <div class="card-body d-flex" style="text-align: center;">
+                    <button type="button" class="ms-4 btn btn-success" style="background-color: #A367B1; border: 2px solid #A367B1; border-radius: 10px; 
+                  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25); max-width: 100%;" data-bs-toggle="modal"
+                        data-bs-target="#exampleModal"> จองชุด</button>
+                    <button type="button" class="ms-1 btn-success" style="background-color: #A367B1; border: 2px solid #A367B1; border-radius: 10px; 
+                            box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25); max-width: 100%;" data-bs-toggle="modal"
+                        data-bs-target="#exampleModal"> ดูตาราง</button>
+                    <button type="button" class="ms-1 btn-success" style="background-color: #A367B1; border: 2px solid #A367B1; border-radius: 10px; 
+                        box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25); max-width: 100%;" data-bs-toggle="modal"
+                        data-bs-target="#exampleModal"> เงื่อนไข</button>
+                </div>
+            </div>
+
+        </div>
+        <!-- PROMOTION -->
+
         <div class="d-flex justify-content-center mt-5">
             <h1 id="section2"> ติดต่อเรา </h1>
         </div>

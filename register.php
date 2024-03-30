@@ -1,3 +1,33 @@
+<?php
+require_once('config.php');
+
+if (isset($_POST["submit"])) {
+    $username = $_POST["username"];
+    $password = md5($_POST["password"]); // Using md5 for simplicity. Consider using more secure methods.
+    $name = $_POST["name"];
+    $lastname = $_POST["lastname"];
+    $email = $_POST["email"];
+    $phone = $_POST["phone"];
+    $address = $_POST["address"];
+
+    // Check if the username already exists
+    $sql = "SELECT * FROM wedding_user WHERE username = '$username'";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        echo "<script>alert('ชื่อผู้ใช้นี้มีอยู่แล้วกรุณาใช้ชื่อผู้ใช้อื่น');</script>";
+    } else {
+        // Insert new user into the database
+        $sql = "INSERT INTO wedding_user (username, password, name, lastname, email, phone, address) VALUES ('$username', '$password', '$name', '$lastname', '$email', '$phone', '$address')";
+        if ($conn->query($sql) === TRUE) {
+            echo "<script>alert('สมัครสมาชิกเรียบร้อยแล้ว'); window.location.href = 'login.php';</script>";
+            exit();
+        } else {
+            echo "Error: " . $sql . "<br>" . $conn->error;
+        }
+    }
+}
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -7,10 +37,12 @@
     <title>Registration Form</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="./css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-        integrity="sha512-Dg6zV4QO9eMOxZSwPp4h2QLgE75m3S6ZnE2V9W8+EEB6jQjNDMTfDPfmC1AA7wu8SZ9bhu+eoxLb9jKFGJXY7g=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11">
+    <!-- Include Sweetalert2 CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.9/sweetalert2.min.css">
+    <!-- Include Sweetalert2 JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.9/sweetalert2.min.js"></script>
+
+
     <style>
         @import url(http://fonts.googleapis.com/css?family=Kanit);
 
