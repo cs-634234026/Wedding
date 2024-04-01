@@ -1,3 +1,42 @@
+<?php
+require_once('config.php');
+
+$username = "";
+$error = ""; // เพิ่มตัวแปร error เพื่อเก็บข้อความแสดงข้อผิดพลาด
+
+if (isset($_POST["submit"])) {
+  $username = trim($_POST['username']);  // ตัดช่องว่าง
+  $password = $_POST['password'];
+
+  // ตรวจสอบข้อมูลผู้ใช้และรหัสผ่าน (แทนที่ด้วยการตรวจสอบของคุณ)
+  if (empty($username) || empty($password)) {
+    $error = "กรุณากรอกทั้งชื่อผู้ใช้และรหัสผ่าน";
+  } else {
+    // เข้ารหัสรหัสผ่านเพื่อความปลอดภัย (แทนที่ด้วยอัลกอริทึมการเข้ารหัสที่แข็งแกร่ง เช่น password_hash)
+    $hashed_password = md5($password);
+
+    $sql = "SELECT * FROM wedding_user WHERE username = '" . mysqli_real_escape_string($conn, $username) . "' AND password = '$hashed_password'";
+    $query = mysqli_query($conn, $sql);
+    $result = mysqli_fetch_array($query, MYSQLI_ASSOC);
+
+    if (!$result) {
+      $error = "ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง";
+    } else {
+      $_SESSION["username"] = $result["username"];
+      $_SESSION["role"] = $result["role"];
+      $_SESSION["id"] = $result["id"];
+
+      if ($_SESSION["role"] == 'admin') {
+        header("location:admin.html");
+        exit();
+      } else {
+        header("location:index.php");
+        exit();
+      }
+    }
+  }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,10 +44,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registration Form</title>
     <link rel="stylesheet" href="./css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-        integrity="sha512-Dg6zV4QO9eMOxZSwPp4h2QLgE75m3S6ZnE2V9W8+EEB6jQjNDMTfDPfmC1AA7wu8SZ9bhu+eoxLb9jKFGJXY7g=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11">
     <style>
         @import url(http://fonts.googleapis.com/css?family=Kanit);
 
@@ -49,17 +84,6 @@
             box-shadow: 0 0 5px rgba(220, 159, 67, 0.5);
             outline: none;
         }
-
-        /* .btn-primary {
-            background-color: #DC9F43;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            color: #fff;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        } */
-
         .btn-primary:hover {
             background-color: #c88f3f;
         }
@@ -69,7 +93,7 @@
 <body>
     <div class="container">
 <h2 class="text-center mt-2 mb-2">เข้าสู่ระบบเพื่อใช้งาน</h2>
-        <form id="registrationForm" action="register.php" method="POST">
+        <form id="registrationForm" action="login.php" method="POST">
             <div class="mb-3">
                 <label for="username" class="form-label">Username</label>
                 <input type="text" class="form-control" id="username" name="username" placeholder="Enter your username" required>

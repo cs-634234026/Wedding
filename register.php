@@ -3,7 +3,7 @@ require_once('config.php');
 
 if (isset($_POST["submit"])) {
     $username = $_POST["username"];
-    $password = md5($_POST["password"]); // Using md5 for simplicity. Consider using more secure methods.
+    $password = md5($_POST["password"]); 
     $name = $_POST["name"];
     $lastname = $_POST["lastname"];
     $email = $_POST["email"];
@@ -35,13 +35,9 @@ if (isset($_POST["submit"])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registration Form</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="./css/bootstrap.min.css">
-    <!-- Include Sweetalert2 CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.9/sweetalert2.min.css">
-    <!-- Include Sweetalert2 JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.9/sweetalert2.min.js"></script>
-
+    <script src="./js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
     <style>
         @import url(http://fonts.googleapis.com/css?family=Kanit);
@@ -128,7 +124,7 @@ if (isset($_POST["submit"])) {
             </div>
             <div class="mb-3">
                 <label for="phone" class="form-label">Phone</label>
-                <input type="text" class="form-control" id="phone" name="phone" placeholder="Enter your phone" required>
+                <input type="number" class="form-control" id="phone" name="phone" placeholder="Enter your phone" required>
             </div>
             <div class="mb-3">
                 <label for="address" class="form-label">Address</label>
@@ -136,7 +132,7 @@ if (isset($_POST["submit"])) {
             </div>
             <div class="text-center">
                 <a href="index.php" class="btn btn-danger">ยกเลิก</a>
-                <button type="submit" class="btn btn-success">สมัครสมาชิก</button>
+                <button type="submit" name="submit" class="btn btn-success">สมัครสมาชิก</button>
             </div>
         </form>
         <div class="mt-3 text-center">

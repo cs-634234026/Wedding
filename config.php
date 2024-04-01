@@ -13,11 +13,9 @@ if ($conn->connect_error) {
     die("การเชื่อมต่อล้มเหลว: " . $conn->connect_error);
 } 
 
+session_start();
 // ตั้งค่าชุดอักขระไคลเอนต์เริ่มต้น
 mysqli_set_charset($conn, "utf8");
-
-// เปิดใช้งาน SESSION
-session_start();
 
 // ตั้งค่า timezone ในประเทศไทย
 date_default_timezone_set('Asia/Bangkok');
