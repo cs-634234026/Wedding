@@ -1,3 +1,7 @@
+<?php
+require_once('config.php');
+?>
+
 
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #DC9F43; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
     <div class="container-fluid">
@@ -24,7 +28,8 @@
                 <div class="text-end ml-lg-4">
                     <div class="btn-group">
                         <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
-                        </button>
+                        <?php echo $_SESSION['username']?>
+                    </button>
                         <ul class="dropdown-menu dropdown-menu-lg-end">
                             <li><button class="dropdown-item" type="button" onclick="window.location.href='profile.php'">ข้อมูลส่วนตัว</button></li>
                             <li><button class="dropdown-item" type="button" onclick="window.location.href='history.php'">ประวัติการใช้งาน</button></li>

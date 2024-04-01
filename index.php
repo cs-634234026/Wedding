@@ -1,5 +1,8 @@
 <?php
 require_once('config.php');
+if(!$_SESSION['userid']){
+    header("Location:index.php");
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">

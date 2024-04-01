@@ -1,45 +1,44 @@
 <?php
 require_once('config.php');
 
-$username = "";
-$error = ""; // เพิ่มตัวแปร error เพื่อเก็บข้อความแสดงข้อผิดพลาด
+if (isset($_POST['username'])){
 
-if (isset($_POST["submit"])) {
-  $username = trim($_POST['username']);  // ตัดช่องว่าง
-  $password = $_POST['password'];
+    $username = $_POST['username'];
+    $password = $_POST['password'];
 
-  // ตรวจสอบข้อมูลผู้ใช้และรหัสผ่าน (แทนที่ด้วยการตรวจสอบของคุณ)
-  if (empty($username) || empty($password)) {
-    $error = "กรุณากรอกทั้งชื่อผู้ใช้และรหัสผ่าน";
-  } else {
-    // เข้ารหัสรหัสผ่านเพื่อความปลอดภัย (แทนที่ด้วยอัลกอริทึมการเข้ารหัสที่แข็งแกร่ง เช่น password_hash)
-    $hashed_password = md5($password);
+    // Assuming 'wedding_user' is the column name for the username
+    $query = "SELECT * FROM wedding_user WHERE username = '$username' AND password = '$password'";
+    $result = mysqli_query($conn,$query);
 
-    $sql = "SELECT * FROM wedding_user WHERE username = '" . mysqli_real_escape_string($conn, $username) . "' AND password = '$hashed_password'";
-    $query = mysqli_query($conn, $sql);
-    $result = mysqli_fetch_array($query, MYSQLI_ASSOC);
+    if(mysqli_num_rows($result) == 1){
 
-    if (!$result) {
-      $error = "ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง";
+        $row = mysqli_fetch_array($result);
+        session_start();
+        $_SESSION['userid'] = $row['id'];
+        $_SESSION['username'] = $row['name'] . " " . $row['lastname'];
+        $_SESSION['role'] = $row['role'];
+
+        if($_SESSION['role'] == 'admin'){
+            header("Location: admin.php");
+            exit(); // Exit after redirection
+        }
+        if($_SESSION['role'] == 'user'){
+            header("Location: index.php");
+            exit(); // Exit after redirection
+        }
     } else {
-      $_SESSION["username"] = $result["username"];
-      $_SESSION["role"] = $result["role"];
-      $_SESSION["id"] = $result["id"];
-
-      if ($_SESSION["role"] == 'admin') {
-        header("location:admin.html");
-        exit();
-      } else {
-        header("location:index.php");
-        exit();
-      }
+        echo "<script>alert('Invalid username or password')</script>";
     }
-  }
 }
 ?>
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<head> 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registration Form</title>
