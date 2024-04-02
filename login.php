@@ -4,7 +4,7 @@ require_once('config.php');
 if (isset($_POST['username'])){
 
     $username = $_POST['username'];
-    $password = $_POST['password'];
+    $password = md5($_POST['password']); // Encrypt the password
 
     // Assuming 'wedding_user' is the column name for the username
     $query = "SELECT * FROM wedding_user WHERE username = '$username' AND password = '$password'";

@@ -33,7 +33,6 @@ require_once('config.php');
                         <ul class="dropdown-menu dropdown-menu-lg-end">
                             <li><button class="dropdown-item" type="button" onclick="window.location.href='profile.php'">ข้อมูลส่วนตัว</button></li>
                             <li><button class="dropdown-item" type="button" onclick="window.location.href='history.php'">ประวัติการใช้งาน</button></li>
-                            <li><button class="dropdown-item" type="button" onclick="window.location.href='admin/index.php'">ระบบหลังบ้าน</button></li>
                             <hr>
                             <li><button class="dropdown-item" type="button" onclick="window.location.href='logout.php'">ออกจากระบบ</button></li>
                         </ul>
